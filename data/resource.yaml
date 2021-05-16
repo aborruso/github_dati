@@ -1,0 +1,48 @@
+encoding: utf-8
+format: csv
+hashing: md5
+name: input
+path: input.csv
+profile: tabular-data-resource
+missingValues: ["NaN", "-"]
+schema:
+  fields:
+  - name: id
+    type: integer
+    description: identificativo
+    constraints:
+      unique: true
+  - name: nome
+    type: string
+    description: nome utente
+    constraints:
+      required: true
+  - name: eta
+    type: integer
+    description: eta utente
+  - name: peso
+    type: number
+    description: peso dell'utente in kg
+    constraints:
+      minimum: 20
+  - name: pesoSoglia
+    type: any
+    description: notifica sul superamento soglia
+    constraints:
+      enum: ["alert","normal"]
+  - name: comune
+    type: string
+    description: comune di residenza utente
+  - name: comuneISTAT
+    type: string
+    description: codice ISTAT del comune di residenza utente
+    constraints:
+      pattern: ^[0-9]{6}$
+  - name: email
+    type: string
+    description: email utente
+    format: email
+  - name: data_nascita
+    type: date
+    description: email utente
+scheme: file
